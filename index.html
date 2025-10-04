@@ -1,431 +1,525 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SisFarma</title>
-    <link rel="shortcut icon" href="assets/image/card-img.jpg" type="">
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Farmacia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- script ion-icons -->
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <!-- script apache echarts -->
+    <script src="
+        https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
+    "></script>
 </head>
 
-<body>
+<body class="darkmode">
+    <!---------------------------------------------Cabecera--------------------------------------------------->
+    <header>
+        <nav id="navbar">
+            <div class="hamburguesa">
+                <ion-icon name="menu"></ion-icon>
+            </div>
+            <div class="nav-container">
+                <div class="nav-title">
+                    <h3>sistema farmacia administrador</h3>
+                </div>
+                <div class="nav-content">
 
-    <!-- Sidebar -->
-    <div class="sidebar collapsed" id="sidebar">
-        <div class="sidebar-header">
-            <button class="toggle-btn" id="toggleBtn">
-                <ion-icon name="menu-outline"></ion-icon>
-            </button>
-            <span class="sidebar-title">SISFARMA</span>
+                    <!-----------------------Modo Oscuro--------------------------------->
+                    <div>
+                        <label class="switch">
+                            <input type="checkbox" id="darkModeToggleInput">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <!-----------------------Mensage notificaciones--------------------------------->
+
+                    <div class="notificacion">
+                        <ion-icon name="notifications-outline"></ion-icon>
+                    </div>
+                    <div class="user">
+                        <ion-icon name="contact"></ion-icon>
+                    </div>
+
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!---------------------------------------------Cuerpo principal--------------------------------------------------->
+    <main>
+        <div class="sidebar">
+            <ul class="sidebar-content">
+                <li class="link">
+                    <div class="menu-item">
+                        <div class="item-link">
+                            <ion-icon name="home"></ion-icon>
+                            <a href="#">Inicio</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="link">
+                    <div class="menu-item">
+                        <div class="item-link">
+                            <ion-icon name="cube"></ion-icon>
+                            <span>Almacenes</span>
+                        </div>
+                        <ion-icon name="arrow-dropdown"></ion-icon>
+                    </div>
+                    <ul class="sub-links">
+                        <li class="sub-link"><a href="#">Categoria</a></li>
+                        <li class="sub-link"><a href="#">Presentacion</a></li>
+                        <li class="sub-link"><a href="#">Marca</a></li>
+                        <li class="sub-link"><a href="#">Producto</a></li>
+                        <li class="sub-link"><a href="#">Codigo de barra</a></li>
+                    </ul>
+                </li>
+                <li class="link">
+                    <div class="menu-item">
+                        <div class="item-link">
+                            <ion-icon name="cart"></ion-icon>
+                            <span>Compras</span>
+                        </div>
+                        <ion-icon name="arrow-dropdown"></ion-icon>
+                    </div>
+                    <ul class="sub-links">
+                        <li class="sub-link"><a href="#">Proveedores</a></li>
+                        <li class="sub-link"><a href="#">Compras realizadas</a></li>
+                        <li class="sub-link"><a href="#">Compras por fecha</a></li>
+                        <li class="sub-link"><a href="#">Compras por mes y año</a></li>
+                        <li class="sub-link"><a href="#">Compras por proveedor</a></li>
+                    </ul>
+                </li>
+                <li class="link">
+                    <div class="menu-item">
+                        <div class="item-link">
+                            <ion-icon name="wallet"></ion-icon>
+                            <span>Ventas</span>
+                        </div>
+                        <ion-icon name="arrow-dropdown"></ion-icon>
+                    </div>
+                    <ul class="sub-links">
+                        <li class="sub-link"><a href="#">Clientes</a></li>
+                        <li class="sub-link"><a href="#">Abrir venta</a></li>
+                        <li class="sub-link"><a href="#">Ver ventas</a></li>
+                        <li class="sub-link"><a href="#">Ver ventas por fecha</a></li>
+                        <li class="sub-link"><a href="#">Informes mensuales</a></li>
+                    </ul>
+                </li>
+                <li class="link">
+                    <div class="menu-item">
+                        <div class="item-link">
+                            <ion-icon name="briefcase"></ion-icon>
+                            <span>Inventario</span>
+                        </div>
+                        <ion-icon name="arrow-dropdown"></ion-icon>
+                    </div>
+                    <ul class="sub-links">
+                        <li class="sub-link"><a href="#">Inventario inicial</a></li>
+                        <li class="sub-link"><a href="#">Abrir nuevo inventario</a></li>
+                        <li class="sub-link"><a href="#">Saldos y movimientos</a></li>
+                    </ul>
+                </li>
+                <li class="link">
+                    <div class="menu-item">
+                        <div class="item-link">
+                            <ion-icon name="briefcase"></ion-icon>
+                            <span>Sucursales</span>
+                        </div>
+                        <ion-icon name="arrow-dropdown"></ion-icon>
+                    </div>
+                    <ul class="sub-links">
+                        <li class="sub-link"><a href="#">Abrir sucursal</a></li>
+                        <li class="sub-link"><a href="#">Ver sucursales</a></li>
+                        <li class="sub-link"><a href="#">Asignar sucursal saldo</a></li>
+                        <li class="sub-link"><a href="#">Cerrar sucursal</a></li>
+                    </ul>
+                </li>
+                <li class="link">
+                    <div class="menu-item">
+                        <div class="item-link">
+                            <ion-icon name="people"></ion-icon>
+                            <span>Usuarios</span>
+                        </div>
+                        <ion-icon name="arrow-dropdown"></ion-icon>
+                    </div>
+                    <ul class="sub-links">
+                        <li class="sub-link"><a href="#">Crear usuario</a></li>
+                        <li class="sub-link"><a href="#">Perfiles de usuario</a></li>
+                        <li class="sub-link"><a href="#">Permisos</a></li>
+                        <li class="sub-link"><a href="#">Asignar</a></li>
+                    </ul>
+                </li>
+                <li class="link">
+                    <div class="menu-item">
+                        <div class="item-link">
+
+                            <ion-icon name="clipboard"></ion-icon>
+                            <span>Reportes</span>
+                        </div>
+                        <ion-icon name="arrow-dropdown"></ion-icon>
+                    </div>
+                    <ul class="sub-links">
+                        <li class="sub-link"><a href="#">Reportes generales de compras</a></li>
+                        <li class="sub-link"><a href="#">Reportes compras detallado</a></li>
+                        <li class="sub-link"><a href="#">Compras Anuales</a></li>
+                        <li class="sub-link"><a href="#">Compras mensuales</a></li>
+                        <li class="sub-link"><a href="#">Reportes generales de ventas</a></li>
+                        <li class="sub-link"><a href="#">Reportes ventas detallado</a></li>
+                        <li class="sub-link"><a href="#">Ventas anuales</a></li>
+                        <li class="sub-link"><a href="#">Ventas mensuales</a></li>
+                    </ul>
+                </li>
+                <li class="link">
+                    <div class="menu-item">
+                        <div class="item-link">
+
+                            <ion-icon name="pie"></ion-icon>
+                            <span>Graficos Estadisticos</span>
+                        </div>
+                        <ion-icon name="arrow-dropdown"></ion-icon>
+                    </div>
+                    <ul class="sub-links">
+                        <li class="sub-link"><a href="#">Ingresos egresos</a></li>
+                        <li class="sub-link"><a href="#">Grafica de barras</a></li>
+                        <li class="sub-link"><a href="#">Compras y ventas</a></li>
+                    </ul>
+                </li>
+                <li class="link">
+                    <div class="menu-item">
+                        <div class="item-link">
+
+                            <ion-icon name="cloud-download"></ion-icon>
+                            <a href="#">Inicio</a>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="menu">
-            <!-- Inicio -->
-            <a href="#" class="menu-item">
-                <ion-icon name="home-outline" title="Inicio"></ion-icon>
-                <span>Inicio</span>
-            </a>
+        <div class="main-content">
 
-            <!-- Caja -->
-            <a href="#" class="menu-item">
-                <ion-icon name="cash-outline" title="Caja"></ion-icon>
-                <span>Caja</span>
-            </a>
 
-            <!-- Productos -->
-            <a href="#" class="menu-item">
-                <ion-icon name="cube-outline"></ion-icon>
-                <span>Productos</span>
-            </a>
-
-            <!-- Catálogo -->
-            <div class="menu-item has-submenu">
-                <a href="#" class="submenu-tonggle">
-                    <ion-icon name="albums-outline"></ion-icon>
-                    <span>Catálogo</span>
-                </a>
-                <div class="submenu">
-                    <a href="#" class="submenu-item">Categorías</a>
-                    <a href="#" class="submenu-item">Laboratorios</a>
-                    <a href="#" class="submenu-item">Clientes</a>
-                    <a href="#" class="submenu-item">Doctores</a>
-                    <a href="#" class="submenu-item">Proveedores</a>
-                </div>
+            <div class="title">
+                <h1>dashboard</h1>
             </div>
-
-            <!-- Almacén -->
-            <div class="menu-item has-submenu">
-                <a href="#" class="submenu-tonggle">
-                    <ion-icon name="business-outline"></ion-icon>
-                    <span>Almacén</span>
-                </a>
-                <div class="submenu">
-                    <a href="" class="submenu-item">Inventario</a>
-                    <a href="" class="submenu-item">Reabastecimiento</a>
-                    <a href="" class="submenu-item">Ajuste de inventario</a>
-                </div>
-            </div>
-
-            <!-- Reportes -->
-            <div class="menu-item has-submenu">
-                <a href="#" class="submenu-tonggle">
-                    <ion-icon name="bar-chart-outline"></ion-icon>
-                    <span>Reportes</span>
-                </a>
-                <div class="submenu">
-                    <a href="" class="submenu-item">Movimientos</a>
-                    <a href="" class="submenu-item">Ventas</a>
-                    <a href="" class="submenu-item">Ventas x Cliente</a>
-                    <a href="" class="submenu-item">Ventas x Doctores</a>
-                    <a href="" class="submenu-item">Ventas x Usuario</a>
-                </div>
-            </div>
-
-            <!-- Usuario -->
-            <a href="#" class="menu-item">
-                <ion-icon name="person-outline"></ion-icon>
-                <span>Usuario</span>
-            </a>
-
-            <!-- Cerrar sesión -->
-            <a href="#" class="menu-item">
-                <ion-icon name="log-out-outline"></ion-icon>
-                <span>Cerrar sesión</span>
-            </a>
-        </div>
-    </div>
-
-
-    <!-- Main content -->
-    <div class="main" id="main">
-        <div class="main-title">
-            <div class="title-bar">
-                <h2 class="">DASHBOARD</h2>
-            </div>
-            <p>Bienvenido administrador principal este es el panel principal del sistema, aca podra encontrar atajos
-                apra acceder a los modulos y funcionalidades del sistema</p>
-            <p>fecha actual aqui se mostrar ej: 10/10/2025</p>
-        </div>
-
-
-
-        <!-------------- contenedor de card----------->
-        <!-------------- resumen o enlases directos ----------->
-        <div class="title-sec"> links rapidos </div>
-        <div class="card-container">
-            <div class="card-resumen" >
-                <div class="card-body">
-                    <img src="assets/image/card-img.jpg" class="card-img-top" alt="assets/image/card-img.jpg">
-                    <div class="card-text">
-                        <h4>Medicamentos por vencer</h4>
-                        <p>12 unidades</p>
+            <!-- enlaces directos o acrotadores mas usados -->
+            <div class="direct-link">
+                <div class="container-direct-links">
+                    <div class="direct-link-item red">
+                        <a href="#">
+                            <div class="direct-link-text">
+                                <h3>14</h3>
+                                <p>Cajas</p>
+                            </div>
+                            <div class="direct-link-image">
+                                <ion-icon name="medkit"></ion-icon>
+                            </div>
+                            <div class="direct-link-collapsed">
+                                <h3>Abrir</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="direct-link-item orange">
+                        <a href="#">
+                            <div class="direct-link-text">
+                                <h3>14</h3>
+                                <p>Cajas</p>
+                            </div>
+                            <div class="direct-link-image">
+                                <ion-icon name="medkit"></ion-icon>
+                            </div>
+                            <div class="direct-link-collapsed">
+                                <h3>Abrir</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="direct-link-item green">
+                        <a href="#">
+                            <div class="direct-link-text">
+                                <h3>14</h3>
+                                <p>Cajas</p>
+                            </div>
+                            <div class="direct-link-image">
+                                <ion-icon name="medkit"></ion-icon>
+                            </div>
+                            <div class="direct-link-collapsed">
+                                <h3>Abrir</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="direct-link-item blue">
+                        <a href="#">
+                            <div class="direct-link-text">
+                                <h3>14</h3>
+                                <p>Cajas</p>
+                            </div>
+                            <div class="direct-link-image">
+                                <ion-icon name="medkit"></ion-icon>
+                            </div>
+                            <div class="direct-link-collapsed">
+                                <h3>Abrir</h3>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <a href="">ver +</a>
             </div>
-            <div class="card-resumen" >
-                <div class="card-body">
-                    <img src="assets/image/card-img.jpg" class="card-img-top" alt="assets/image/card-img.jpg">
-                    <div class="card-text">
-                        <h4>Medicamentos poco stock</h4>
-                        <p>12 unidades</p>
-                    </div>
-                </div>
-                <a href="">ver +</a>
+            <!-- resumende las compras del año actual -->
+            <div class="sub-title">
+                <h2>resumen de compras diarias</h2>
             </div>
-            <div class="card-resumen" >
-                <div class="card-body">
-                    <img src="assets/image/card-img.jpg" class="card-img-top" alt="assets/image/card-img.jpg">
-                    <div class="card-text">
-                        <h4>Medicamentos vendidos</h4>
-                        <p>12 unidades</p>
-                    </div>
-                </div>
-                <a href="">ver +</a>
-            </div>
-            <div class="card-resumen" >
-                <div class="card-body">
-                    <img src="assets/image/card-img.jpg" class="card-img-top" alt="assets/image/card-img.jpg">
-                    <div class="card-text">
-                        <h4>Medicamentos caducados</h4>
-                        <p>12 unidades</p>
-                    </div>
-                </div>
-                <a href="">ver +</a>
-            </div>
-            <div class="card-resumen" >
-                <div class="card-body">
-                    <img src="assets/image/card-img.jpg" class="card-img-top" alt="assets/image/card-img.jpg">
-                    <div class="card-text">
-                        <h4>Medicamentos populares</h4>
-                        <p>12 unidades</p>
-                    </div>
-                </div>
-                <a href="">ver +</a>
-            </div>
-            <div class="card-resumen" >
-                <div class="card-body">
-                    <img src="assets/image/card-img.jpg" class="card-img-top" alt="assets/image/card-img.jpg">
-                    <div class="card-text">
-                        <h4>Medicamentos</h4>
-                        <p>12 unidades</p>
-                    </div>
-                </div>
-                <a href="">ver +</a>
-            </div>
-            <div class="card-resumen" >
-                <div class="card-body">
-                    <img src="assets/image/card-img.jpg" class="card-img-top" alt="assets/image/card-img.jpg">
-                    <div class="card-text">
-                        <h4>Medicamentos</h4>
-                        <p>12 unidades</p>
-                    </div>
-                </div>
-                <a href="">ver +</a>
-            </div>
-            <div class="card-resumen" >
-                <div class="card-body">
-                    <img src="assets/image/card-img.jpg" class="card-img-top" alt="assets/image/card-img.jpg">
-                    <div class="card-text">
-                        <h4>Medicamentos</h4>
-                        <p>12 unidades</p>
-                    </div>
-                </div>
-                <a href="">ver +</a>
-            </div>
+            <div class="res-compras">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
 
-        </div>
-
-        <!-------------- contenedor de productos a vencer ----------->
-        <div class="title-sec">Productos proximos a vencer</div>
-
-        <div class="tables">
-            <div class="tables-container">
-                <div class="cake">
-                    <div class="graphyc">
-                        <h3>Gráfico</h3>
-                        <img src="assets\image/cake.png" alt="cake.png" title="pastel de posibilidades">
-
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="table table-striped table-hover aling-middle">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>@social</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
-        </div>
-        <!-------------- contenedor de stock por terminar ----------->
-        <div class="title-sec">Stock por terminar</div>
-
-        <div class="tables">
-            <div class="tables-container">
-                <div class="cake">
-                    <div class="graphyc">
-                        <h3>Gráfico</h3>
-                        <img src="assets\image/cake.png" alt="cake.png" title="pastel de posibilidades">
-
-                    </div>
-                </div>
-                <table class="table table-striped table-hover aling-middle">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>@social</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- resumende ventas del año actual -->
+            <div class="sub-title">
+                <h2>resumen de ventas diarias</h2>
             </div>
-        </div>
-        <!-------------- contenedor de productos mas vendidos ----------->
-        <div class="title-sec">Productos mas vendidos</div>
-        <div class="tables">
-            <div class="tables-container">
-                <div class="cake">
-                    <div class="graphyc">
-                        <h3>Gráfico</h3>
-                        <img src="assets\image/cake.png" alt="cake.png" title="pastel de posibilidades">
+            <div class="res-ventas">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
 
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="table table-striped table-hover aling-middle">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>@social</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
-        </div>
-        <!-------------- contenedor de ventas realizadas  ----------->
-        <div class="title-sec">Ventas realizadas (por mes)</div>
-        <div class="tables">
-            <div class="tables-container">
-                <div class="cake">
-                    <div class="graphyc">
-                        <h3>Gráfico</h3>
-                        <img src="assets\image/cake.png" alt="cake.png" title="pastel de posibilidades">
+            <!-- resumen de ingresos egresos -->
+            <div class="sub-title">
+                <h2>ingresos y egresos</h2>
+            </div>
+            <div class="res-ingresos-egresos">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>cofarm</td>
+                                <td>10bs</td>
+                                <td>500 unidades</td>
+                                <td><span class="estate"> Disponible</span></td>
+                            </tr>
 
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="table table-striped table-hover aling-middle">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>@social</td>
-                        </tr>
-                    </tbody>
-                </table>
+            </div>
+            <!-- ingreso egresso grafica de barras -->
+            <div class="sub-title">
+                <h2>grafica de barras ingresos y egresos</h2>
+            </div>
+            <div class="ingresos-egresos-barras">
+                <div class="graphyc-container">
+                    <div id="graphyc" style="width: 600px;height:400px;"></div>
+
+                </div>
             </div>
         </div>
 
+    </main>
 
-    </div>
+    <!---------------------------------------------Pie de pagina--------------------------------------------------->
     <footer>
-        <div class="container-footer">
-            <p>&copy; 2025 SISFARMA. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <h3> derechos reservados </h3>
         </div>
     </footer>
+    <script> // funcionamiento del modo oscuro
+        const toggle = document.querySelector('#darkModeToggleInput'); // el input real
+        const body = document.querySelector('body');
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script> // script para el sidebar
-        const sidebar = document.getElementById("sidebar");
-        const toggleBtn = document.getElementById("toggleBtn");
+        load();
 
-        toggleBtn.addEventListener("click", () => {
-            sidebar.classList.toggle("collapsed");
+        // Detectar cambio de estado
+        toggle.addEventListener('change', () => {
+            body.classList.toggle('dark');
+            store(body.classList.contains('dark'));
         });
 
-        // Estado inicial según ancho de pantalla
-        function setInitialSidebar() {
-            if (window.innerWidth > 768) {
-                sidebar.classList.remove("collapsed"); // Desktop expandido
-            } else {
-                sidebar.classList.add("collapsed"); // Móvil contraído
-            }
+        // Cargar estado guardado
+        function load() {
+            const darkmode = localStorage.getItem('dark') === 'true';
+            body.classList.toggle('dark', darkmode);
+            toggle.checked = darkmode; // refleja el estado en el toggle
         }
 
-        window.addEventListener("resize", setInitialSidebar);
-        window.addEventListener("load", setInitialSidebar);
+        // Guardar estado
+        function store(value) {
+            localStorage.setItem('dark', value);
+        }
     </script>
+    <script>//funcionamiento del despligue de los sub links
+        document.querySelectorAll(".sidebar .menu-item").forEach(item => {
+            item.addEventListener("click", () => {
+                const parent = item.closest(".link");
 
-    <script> // script para el submenu
-        document.querySelectorAll(".submenu-tonggle").forEach(btn => {
-            btn.addEventListener("click", e => {
-                e.preventDefault();
-                const parent = btn.parentElement;
-
-                // Cerrar todos los submenús excepto el actual
-                document.querySelectorAll(".has-submenu").forEach(item => {
-                    if (item !== parent) item.classList.remove("open");
+                // Cerrar todos los demás
+                document.querySelectorAll(".sidebar .link").forEach(link => {
+                    if (link !== parent) link.classList.remove("open");
                 });
 
-                // Toggle solo el clicado
+                // Alternar el actual
                 parent.classList.toggle("open");
             });
         });
+
+    </script>
+    <script> //funcionamiento del boton hamburguesa
+        const hamburguesa = document.querySelector('.hamburguesa');
+        const sidebar = document.querySelector('.sidebar');
+
+        hamburguesa.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        })
     </script>
 
-</body>
+    <script type="text/javascript"> //crafica de ingresos y egresos 
+        // Initialize the echarts instance based on the prepared dom
+        var myChart = echarts.init(document.getElementById('graphyc'));
 
+        // Specify the configuration items and data for the chart
+        var option = {
+            title: {
+                text: 'INGRESOS EGRESOS'
+            },
+            tooltip: {},
+            legend: {
+                data: ['sales']
+            },
+            xAxis: {
+                data: ['LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO']
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: 'egresos',
+                    type: 'bar',
+                    data: [5, 25, 36, 10, 10, 34, 1]
+                },{
+                    name: 'ingresos',
+                    type: 'bar',
+                    data: [1, 20, 56, 10, 13, 20, 1]
+                }
+            ]
+        };
+
+        // Display the chart using the configuration items and data just specified.
+        myChart.setOption(option);
+    </script>
+    </script>
+</body>
 
 </html>
